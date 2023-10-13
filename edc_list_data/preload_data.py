@@ -57,7 +57,8 @@ class PreloadData:
 
         Format:
             {app_label.model1: [{field_name1: value, field_name2: value ...},...],
-             (app_label.model2, unique_field_name): [{field_name1: value, unique_field_name: value ...}, ...],
+             (app_label.model2, unique_field_name): [{field_name1: value,
+             unique_field_name: value ...}, ...],
              ...}
         """
         for model_name, datas in self.model_data.items():
@@ -81,7 +82,7 @@ class PreloadData:
                         setattr(obj, key, value)
                     obj.save()
 
-    def update_unique_field_data(self):
+    def update_unique_field_data(self):  # noqa
         """Updates the values of the unique fields in a model.
 
         Model must have a unique field and the record must exist
@@ -96,7 +97,7 @@ class PreloadData:
             for field, values in data.items():
                 try:
                     obj = model.objects.get(**{field: values[1]})
-                except model.DoesNotExist as e:
+                except model.DoesNotExist as e:  # noqa
                     try:
                         obj = model.objects.get(**{field: values[0]})
                     except model.DoesNotExist as e:
@@ -109,7 +110,7 @@ class PreloadData:
                 else:
                     try:
                         obj = model.objects.get(**{field: values[0]})
-                    except model.DoesNotExist as e:
+                    except model.DoesNotExist as e:  # noqa
                         pass
                     else:
                         try:

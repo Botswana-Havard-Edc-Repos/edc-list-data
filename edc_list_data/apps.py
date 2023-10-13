@@ -34,7 +34,7 @@ class AppConfig(DjangoAppConfig):
         sys.stdout.write(f'Loading {self.verbose_name} ...\n')
         if 'test' in sys.argv:
             sys.stdout.write(style.WARNING(
-                f' Not updating list data for tests. '
+                ' Not updating list data for tests. '
                 'Add site_list_data.autodiscover() to your test setUp.\n'))
         elif 'migrate' in sys.argv or 'makemigrations' in sys.argv:
             pass
